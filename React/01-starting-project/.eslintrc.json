@@ -1,0 +1,8 @@
+// .eslintrc.json
+{
+  "extends": "01-starting-project",
+  "rules": {
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "indent": ["error", 2]
+  }
+}
