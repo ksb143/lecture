@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(5)">Add 5</button>
+      <button v-on:click.right="reduce(5)">Reduce 5</button>
+      <!-- 초기값 고정 -->
+      <p v-once>Starting Counter: {{ counter}}</p>
+      <p>Result: {{ counter }}</p>
+      <!-- 넘길 인자가 있는 경우 $event 사용하면 event 객체 넘길 수 있음 -->
+      <input 
+        type="text" 
+        v-on:input="setName($event, 'kim')" 
+        v-on:keyup.enter="confirmInput"
+        >
+      <p>Your Name: {{ confirmedName }}</p>
+      <!-- .이벤트 수식어 활요해서 이벤트 동작 바꾸기 -->
+      <form v-on:submit.prevent="submitForm">
+        <input type="text">
+        <button>Signup</button>
+      </form>
+    </section>
+  </body>
+</html>

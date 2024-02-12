@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input type="text" v-model="enterGoalValue"/>
+      <button @click="addGoal">Add Goal</button>
+      <!-- v-if랑 v-else 같이 쓰려면 연속적으로 사용해야 함 -->
+      <!-- v-else-if도 있음 -->
+      <!-- v-show는 html 태그가 그대로 남아 있고 display가 none인 상태로 (가시성 상태가 많이 전환되는 경우 효율적임)  -->
+      <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
+      <ul v-else>
+        <!-- v-for를 사용할 때 고유 식별 기준이 있는 key를 사용해야 함 -->
+        <li v-for="(goal, index) in goals" :key="goal" @click="removeGoal(index)">
+          <p>{{ index }}. {{ goal }}</p>
+          <input type="text" @click.stop>
+        </li>
+      </ul>
+      <!-- v-for에도 객체를 사용할 수 있음 -->
+      <!-- <ul>
+        <li v-for="(value, key, index) in {name: '수빈', age: 27}">{{index}}. {{ key }} : {{ value }}</li>
+      </ul> -->
+      <!-- v-for에 숫자도 사용할 수 있음 -->
+      <!-- <ul>
+        <li v-for="num in 10">{{ num }}</li>
+      </ul> -->
+    </section>
+  </body>
+</html>
