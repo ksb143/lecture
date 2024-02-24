@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
 const initialGameBoard = [
   [null, null, null],
@@ -6,7 +7,12 @@ const initialGameBoard = [
   [null, null, null]
 ]
 
-export default function GameBoard() {
+export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
+  GameBoard.propTypes = {
+    onSelectSquare: PropTypes.func.isRequired,
+    activePlayerSymbol: PropTypes.string.isRequired
+  }
+
   const [gameBoard, setGameBoard] = useState(initialGameBoard)
 
   function handeSelectSquare(rowIndex, colIndex) {
@@ -14,9 +20,11 @@ export default function GameBoard() {
       const updateBoard = [
         ...prevGameBoard.map((innerArray) => [...innerArray])
       ]
-      updateBoard[rowIndex][colIndex] = 'X'
+      updateBoard[rowIndex][colIndex] = activePlayerSymbol
       return updateBoard
     })
+
+    onSelectSquare()
   }
 
   return (
