@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 const initialGameBoard = [
@@ -7,25 +6,34 @@ const initialGameBoard = [
   [null, null, null]
 ]
 
-export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
+export default function GameBoard({ onSelectSquare, turns }) {
   GameBoard.propTypes = {
     onSelectSquare: PropTypes.func.isRequired,
-    activePlayerSymbol: PropTypes.string.isRequired
+    turns: PropTypes.array.isRequired
   }
 
-  const [gameBoard, setGameBoard] = useState(initialGameBoard)
+  let gameBoard = initialGameBoard
 
-  function handeSelectSquare(rowIndex, colIndex) {
-    setGameBoard((prevGameBoard) => {
-      const updateBoard = [
-        ...prevGameBoard.map((innerArray) => [...innerArray])
-      ]
-      updateBoard[rowIndex][colIndex] = activePlayerSymbol
-      return updateBoard
-    })
+  for (const turn of turns ) {
+    const { square, player } = turn
+    const { row, col } = square
 
-    onSelectSquare()
+    gameBoard[row][col] = player
   }
+
+  // const [gameBoard, setGameBoard] = useState(initialGameBoard)
+
+  // function handeSelectSquare(rowIndex, colIndex) {
+  //   setGameBoard((prevGameBoard) => {
+  //     const updateBoard = [
+  //       ...prevGameBoard.map((innerArray) => [...innerArray])
+  //     ]
+  //     updateBoard[rowIndex][colIndex] = activePlayerSymbol
+  //     return updateBoard
+  //   })
+
+  //   onSelectSquare()
+  // }
 
   return (
     <ol id='game-board'>
@@ -34,7 +42,7 @@ export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => handeSelectSquare(rowIndex, colIndex)}>
+                <button onClick={() => onSelectSquare(rowIndex, colIndex)}>
                   {playerSymbol}
                 </button>
               </li>
