@@ -1,11 +1,17 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({
+  initialName,
+  symbol,
+  isActive,
+  onChangeName
+}) {
   Player.propTypes = {
     initialName: PropTypes.string.isRequired,
     symbol: PropTypes.string.isRequired,
-    isActive: PropTypes.bool.isRequired
+    isActive: PropTypes.bool.isRequired,
+    onChangeName: PropTypes.func.isRequired
   }
 
   const [playerName, setPlayerName] = useState(initialName)
@@ -17,6 +23,9 @@ export default function Player({ initialName, symbol, isActive }) {
     // setIsEditing(!isEditing) // true로 업데이트
     // 늘 최신 상태 값을 받아서 사용
     setIsEditing((editing) => !editing)
+    if (isEditing) {
+      onChangeName(symbol, playerName)
+    }
   }
 
   function handleChange(event) {
