@@ -16,12 +16,8 @@ const ResultModal = forwardRef(function ResultModal(
       }
     };
   });
-<<<<<<< HEAD
   // 현재 사용하고 있는 것이 아니라 다른 곳의 웹 페이지의 다른 곳에 가야할 때 createPortal 사용
   // 주로 모달같은 상단에 위치해야할 때 사용
-=======
-  // 현재 사용하고 있는 것이 아니라 다른 곳의 웹 페이지의 다른 곳에 가야할 때createPortal 사용
->>>>>>> 740b277a69eec81546a4a0a3625919eec0da41ca
   return createPortal(
     <dialog className='result-modal' ref={dialog} onClose={onReset}>
       {userLost && <h2>You lost</h2>}
