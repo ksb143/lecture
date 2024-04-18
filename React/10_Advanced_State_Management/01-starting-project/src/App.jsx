@@ -6,7 +6,6 @@ import { DUMMY_PRODUCTS } from './dummy-products.js';
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState({
-    items: [],
   });
 
   function handleAddItemToCart(id) {
@@ -21,7 +20,6 @@ function App() {
       if (existingCartItem) {
         const updatedItem = {
           ...existingCartItem,
-          quantity: existingCartItem.quantity + 1,
         };
         updatedItems[existingCartItemIndex] = updatedItem;
       } else {
@@ -30,12 +28,10 @@ function App() {
           id: id,
           name: product.title,
           price: product.price,
-          quantity: 1,
         });
       }
 
       return {
-        items: updatedItems,
       };
     });
   }
@@ -48,7 +44,6 @@ function App() {
       );
 
       const updatedItem = {
-        ...updatedItems[updatedItemIndex],
       };
 
       updatedItem.quantity += amount;
@@ -60,19 +55,15 @@ function App() {
       }
 
       return {
-        items: updatedItems,
       };
     });
   }
 
   return (
-    <>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
       />
-      <Shop onAddItemToCart={handleAddItemToCart} />
-    </>
   );
 }
 
