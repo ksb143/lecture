@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { CartContext } from '../store/shoping-cart-context.jsx';
 
 export default function Cart() {
@@ -53,5 +54,41 @@ export default function Cart() {
         );
       }}
     </CartContext.Consumer>
+=======
+  const totalPrice = items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+  const formattedTotalPrice = `$${totalPrice.toFixed(2)}`;
+
+  return (
+      {items.length === 0 && <p>No items in cart!</p>}
+      {items.length > 0 && (
+          {items.map((item) => {
+            const formattedPrice = `$${item.price.toFixed(2)}`;
+
+            return (
+              <li key={item.id}>
+                <div>
+                  <span>{item.name}</span>
+                  <span> ({formattedPrice})</span>
+                </div>
+                  <button onClick={() => onUpdateItemQuantity(item.id, -1)}>
+                    -
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => onUpdateItemQuantity(item.id, 1)}>
+                    +
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+        Cart Total: <strong>{formattedTotalPrice}</strong>
+      </p>
+    </div>
+>>>>>>> 5e920bd1542d6cb3fa84f57e6d42f6e32433420f
   );
 }

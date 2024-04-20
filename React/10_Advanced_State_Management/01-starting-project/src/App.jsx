@@ -1,7 +1,7 @@
 import Header from './components/Header.jsx';
 import Shop from './components/Shop.jsx';
-import Product from './components/Product.jsx';
 import { DUMMY_PRODUCTS } from './dummy-products.js';
+<<<<<<< HEAD
 import CartContextProvider from './store/shoping-cart-context.jsx';
 
 function App() {
@@ -21,6 +21,69 @@ function App() {
         ))}
       </Shop>
     </CartContextProvider>
+=======
+
+function App() {
+  const [shoppingCart, setShoppingCart] = useState({
+  });
+
+  function handleAddItemToCart(id) {
+    setShoppingCart((prevShoppingCart) => {
+      const updatedItems = [...prevShoppingCart.items];
+
+      const existingCartItemIndex = updatedItems.findIndex(
+        (cartItem) => cartItem.id === id
+      );
+      const existingCartItem = updatedItems[existingCartItemIndex];
+
+      if (existingCartItem) {
+        const updatedItem = {
+          ...existingCartItem,
+        };
+        updatedItems[existingCartItemIndex] = updatedItem;
+      } else {
+        const product = DUMMY_PRODUCTS.find((product) => product.id === id);
+        updatedItems.push({
+          id: id,
+          name: product.title,
+          price: product.price,
+        });
+      }
+
+      return {
+      };
+    });
+  }
+
+  function handleUpdateCartItemQuantity(productId, amount) {
+    setShoppingCart((prevShoppingCart) => {
+      const updatedItems = [...prevShoppingCart.items];
+      const updatedItemIndex = updatedItems.findIndex(
+        (item) => item.id === productId
+      );
+
+      const updatedItem = {
+      };
+
+      updatedItem.quantity += amount;
+
+      if (updatedItem.quantity <= 0) {
+        updatedItems.splice(updatedItemIndex, 1);
+      } else {
+        updatedItems[updatedItemIndex] = updatedItem;
+      }
+
+      return {
+      };
+    });
+  }
+
+  return (
+      <Header
+        cart={shoppingCart}
+        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
+      />
+>>>>>>> 5e920bd1542d6cb3fa84f57e6d42f6e32433420f
   );
 }
 
