@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0afde4a8-ea1b-4f77-8d4a-d948deb8eee6" name="Changes" comment="" />
+    <list default="true" id="0afde4a8-ea1b-4f77-8d4a-d948deb8eee6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UIUX/ssafy-uix-2024.01-lecture-guide" beforeDir="false" afterPath="$PROJECT_DIR$/UIUX/ssafy-uix-2024.01-lecture-guide" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UIUX/ssafy-uix-2024.01-lecture-guide/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/UIUX/ssafy-uix-2024.01-lecture-guide/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UIUX/ssafy-uix-2024.01-lecture-guide/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/UIUX/ssafy-uix-2024.01-lecture-guide/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2ep25AcoMPKltgiqMXOw7NLnea1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm"
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -34,7 +54,12 @@
       <option name="presentableId" value="Default" />
       <updated>1712587013255</updated>
       <workItem from="1712587014687" duration="1000" />
+      <workItem from="1713630600905" duration="138000" />
+      <workItem from="1713630753133" duration="140000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

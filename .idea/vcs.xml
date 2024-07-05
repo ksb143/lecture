@@ -2,5 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/UIUX/ssafy-uix-2024.01-lecture-guide" vcs="Git" />
   </component>
 </project>
