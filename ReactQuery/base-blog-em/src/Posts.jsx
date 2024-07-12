@@ -1,17 +1,30 @@
-import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useState, useEffect } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { fetchPosts, deletePost, updatePost } from './api';
 import { PostDetail } from './PostDetail';
 const maxPostPage = 10;
 
 export function Posts() {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [selectedPost, setSelectedPost] = useState(null);
 
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    if (currentPage < maxPostPage) {
+      const nextPage = currentPage + 1;
+      // prefetch의 기본 staleTime은 0초이다.
+      queryClient.prefetchQuery({
+        queryKey: ['post', nextPage],
+        queryFn: () => fetchPosts(nextPage),
+      });
+    }
+  }, [currentPage, queryClient]);
+
   const { data, isError, error, isLoading } = useQuery({
-    queryKey: ['post'],
-    queryFn: fetchPosts,
+    queryKey: ['post', currentPage],
+    queryFn: () => fetchPosts(currentPage),
     // stale 이란 오래된 데이터지만 캐시에는 있음 (refetch의 기준)
     // staleTime이 기본이 0인데, 개발자 왈 데이터는 늘 새거여야 한다라는 의미임
     // 즉, 데이터를 가져와야 할 시간을 알려줌
@@ -41,17 +54,31 @@ export function Posts() {
     <>
       <ul>
         {data.map(post => (
-          <li key={post.id} className="post-title" onClick={() => setSelectedPost(post)}>
+          <li
+            key={post.id}
+            className="post-title"
+            onClick={() => setSelectedPost(post)}
+          >
             {post.title}
           </li>
         ))}
       </ul>
       <div className="pages">
-        <button disabled onClick={() => {}}>
+        <button
+          disabled={currentPage <= 1}
+          onClick={() => {
+            setCurrentPage(pre => pre - 1);
+          }}
+        >
           Previous page
         </button>
-        <span>Page {currentPage + 1}</span>
-        <button disabled onClick={() => {}}>
+        <span>Page {currentPage}</span>
+        <button
+          disabled={currentPage >= maxPostPage}
+          onClick={() => {
+            setCurrentPage(pre => pre + 1);
+          }}
+        >
           Next page
         </button>
       </div>
